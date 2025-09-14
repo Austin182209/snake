@@ -61,7 +61,7 @@ function draw() {
     const g = 205*(1-t) + 80*t;
     const b = 50*(1-t) + 10*t;
     const alpha = 1 - 0.6*t;
-    ctx.fillStyle = rgba(${r},${g},${b},${alpha});
+    ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
     const shrink = 1 + Math.floor(4*t);
     const pad = Math.floor(shrink/2);
     ctx.fillRect(seg.x + pad, seg.y + pad, box - shrink, box - shrink);
@@ -82,7 +82,7 @@ function update() {
   if (direction === 'UP') headY -= box;
   if (direction === 'DOWN') headY += box;
 
-  if (headX < 0  headY < 0  headX >= canvas.width || headY >= canvas.height) {
+  if (headX < 0 || headY < 0 || headX >= canvas.width || headY >= canvas.height) {
     return gameOver();
   }
 
