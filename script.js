@@ -69,3 +69,59 @@ function draw() {
     ctx.strokeRect(seg.x + pad, seg.y + pad, box - shrink, box - shrink);
   }
 }
+
+function collision(head, array) {
+  return array.some(s => head.x === s.x && head.y === s.y);
+}
+
+function update() {
+  let headX = snake[0].x;
+  let headY = snake[0].y;
+  if (direction === 'LEFT') headX -= box;
+  if (direction === 'RIGHT') headX += box;
+  if (direction === 'UP') headY -= box;
+  if (direction === 'DOWN') headY += box;
+
+  if (headX < 0  headY < 0  headX >= canvas.width || headY >= canvas.height) {
+    return gameOver();
+  }
+
+  const newHead = { x: headX, y: headY };
+
+  if (collision(newHead, snake)) return gameOver();
+
+  if (newHead.x === food.x && newHead.y === food.y) {
+    snake.unshift(newHead);
+    score++;
+    document.getElementById('score').textContent = 'Score: ' + score;
+    food = spawnFood();
+  } else {
+    snake.pop();
+    snake.unshift(newHead);
+  }
+}
+
+let intervalMs = 150;  // ← အရင် 90 ms → 150 ms လုပ်ပြီး နည်းနည်းနှေးပြီ
+let timer = null;
+
+function startGame() {
+  if (timer) clearInterval(timer);
+  score = 0;
+  document.getElementById('score').textContent = 'Score: 0';
+  direction = 'RIGHT';
+  resetSnake();
+  food = spawnFood();
+  timer = setInterval(() => { update(); draw(); }, intervalMs);
+}
+
+function gameOver() {
+  clearInterval(timer);
+  alert('Game Over! Final Score: ' + score);
+}
+
+draw();
+
+// Start button logic
+document.getElementById('startBtn').addEventListener('click', () => {
+  startGame();
+});
