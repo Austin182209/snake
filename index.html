@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width,initial-scale=1"> 
+  <title>Snake — Long Tail</title> 
+  <link rel="stylesheet" href="style.css"> 
+ </head> 
+ <body> 
+  <h1>🐍 Snake (Long Tail)</h1> 
+  <h2 id="score">Score: 0</h2> 
+  <div class="game-wrap"> 
+   <canvas id="gameCanvas" width="420" height="420"></canvas> <!-- Start Button --> <button id="startBtn" class="btn start">▶️ Start</button> <!-- Controls for mobile --> 
+   <div class="controls"> <button onclick="setDirectionBtn('UP')" class="btn up">⬆️</button> 
+    <div class="hrow"> <button onclick="setDirectionBtn('LEFT')" class="btn left">⬅️</button> <button onclick="setDirectionBtn('DOWN')" class="btn down">⬇️</button> <button onclick="setDirectionBtn('RIGHT')" class="btn right">➡️</button> 
+    </div> 
+   </div> 
+  </div> 
+  <script src="script.js"></script> 
+ </body>
+</html>
