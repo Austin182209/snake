@@ -1,0 +1,55 @@
+:root{
+  --bg1:#0f2027;
+  --bg2:#203a43;
+  --bg3:#2c5364;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body {
+  margin:0;
+  font-family: Inter, Arial, sans-serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:16px;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  color:#fff;
+}
+
+h1{margin:0;font-size:1.6rem;text-shadow:0 2px 6px rgba(0,0,0,0.6)}
+h2{margin:0;font-size:1rem;color:#e6f7ff}
+
+.game-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+canvas{
+  background:#000;
+  border-radius:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.6), inset 0 0 30px rgba(255,255,255,0.02);
+  border:3px solid rgba(255,255,255,0.06);
+}
+
+/* Controls */
+.controls{display:flex;flex-direction:column;align-items:center;user-select:none}
+.hrow{display:flex;gap:8px; margin-top:6px}
+.btn{
+  font-size:1.2rem;
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  background:linear-gradient(180deg,#3a3a3a,#2b2b2b);
+  color:#fff;
+  box-shadow:0 6px 12px rgba(0,0,0,0.4);
+  touch-action: manipulation;
+  cursor:pointer;
+}
+.btn:active{transform:translateY(1px); opacity:.95}
+
+/* Start button style */
+.start{
+  background: linear-gradient(180deg,#4caf50,#2e7d32);
+  font-size:1.3rem;
+  padding:12px 20px;
+  margin-top:10px;
+}
